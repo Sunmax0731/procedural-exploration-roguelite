@@ -1,0 +1,13 @@
+{
+  "product": "procedural-exploration-roguelite",
+  "title": "自動生成探索ローグライト",
+  "domain": "Game",
+  "ideaNo": 2,
+  "platformType": "browser-web",
+  "expectedPublicTarget": "GitHub Pages / BOOTH",
+  "browser": {
+    "evidence": "dist/web-smoke-result.json"
+  },
+  "android": null,
+  "evidence": "dist/platform-runtime-gate-result.json"
+}
