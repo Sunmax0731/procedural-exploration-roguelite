@@ -1,0 +1,87 @@
+{
+  "product": "procedural-exploration-roguelite",
+  "rank": 65,
+  "scenarios": [
+    {
+      "id": "happy-path",
+      "type": "happy-path",
+      "title": "生成部屋の通常処理",
+      "inputs": {
+        "seed": "alpha-forest",
+        "playerAction": "open-relic",
+        "roomState": "cleared",
+        "resourceState": "stable"
+      },
+      "expected": {
+        "status": "pass",
+        "accepted": 1,
+        "warnings": 0
+      }
+    },
+    {
+      "id": "missing-required",
+      "type": "missing-required",
+      "title": "seed不足時の停止",
+      "inputs": {
+        "seed": "",
+        "playerAction": "open-relic",
+        "roomState": "cleared",
+        "resourceState": "stable"
+      },
+      "expected": {
+        "status": "error",
+        "accepted": 0,
+        "warnings": 0
+      }
+    },
+    {
+      "id": "warning",
+      "type": "warning",
+      "title": "カード効果の注意喚起",
+      "inputs": {
+        "seed": "alpha-forest",
+        "playerAction": "reroll",
+        "roomState": "unknown",
+        "resourceState": "low-health"
+      },
+      "flags": [
+        "needsReview"
+      ],
+      "expected": {
+        "status": "warning",
+        "accepted": 1,
+        "warnings": 1
+      }
+    },
+    {
+      "id": "mixed-batch",
+      "type": "mixed-batch",
+      "title": "脱出判断を含む混在バッチ",
+      "items": [
+        {
+          "seed": "alpha-forest",
+          "playerAction": "open-relic",
+          "roomState": "cleared",
+          "resourceState": "stable"
+        },
+        {
+          "seed": "",
+          "playerAction": "open-relic",
+          "roomState": "cleared",
+          "resourceState": "stable"
+        },
+        {
+          "seed": "alpha-forest",
+          "playerAction": "reroll",
+          "roomState": "unknown",
+          "resourceState": "low-health"
+        }
+      ],
+      "expected": {
+        "status": "warning",
+        "accepted": 2,
+        "warnings": 2
+      }
+    }
+  ]
+}
