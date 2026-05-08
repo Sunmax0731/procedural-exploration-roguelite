@@ -5,12 +5,12 @@
     {
       "id": "happy-path",
       "type": "happy-path",
-      "title": "生成部屋の通常処理",
+      "title": "自動生成探索ローグライトの通常フロー",
       "inputs": {
-        "seed": "alpha-forest",
-        "playerAction": "open-relic",
-        "roomState": "cleared",
-        "resourceState": "stable"
+        "seed": "forest-17",
+        "partyBuild": "scout",
+        "roomChoice": "relic-room",
+        "riskLevel": "normal"
       },
       "expected": {
         "status": "pass",
@@ -23,10 +23,10 @@
       "type": "missing-required",
       "title": "seed不足時の停止",
       "inputs": {
-        "seed": "",
-        "playerAction": "open-relic",
-        "roomState": "cleared",
-        "resourceState": "stable"
+        "seed": "forest-17",
+        "partyBuild": "scout",
+        "roomChoice": "",
+        "riskLevel": "normal"
       },
       "expected": {
         "status": "error",
@@ -37,12 +37,12 @@
     {
       "id": "warning",
       "type": "warning",
-      "title": "カード効果の注意喚起",
+      "title": "高リスク部屋の警告",
       "inputs": {
-        "seed": "alpha-forest",
-        "playerAction": "reroll",
-        "roomState": "unknown",
-        "resourceState": "low-health"
+        "seed": "cave-99",
+        "partyBuild": "glass",
+        "roomChoice": "elite-room",
+        "riskLevel": "high-noisy"
       },
       "flags": [
         "needsReview"
@@ -56,25 +56,25 @@
     {
       "id": "mixed-batch",
       "type": "mixed-batch",
-      "title": "脱出判断を含む混在バッチ",
+      "title": "正常・不足・警告を含む混在バッチ",
       "items": [
         {
-          "seed": "alpha-forest",
-          "playerAction": "open-relic",
-          "roomState": "cleared",
-          "resourceState": "stable"
+          "seed": "forest-17",
+          "partyBuild": "scout",
+          "roomChoice": "relic-room",
+          "riskLevel": "normal"
         },
         {
-          "seed": "",
-          "playerAction": "open-relic",
-          "roomState": "cleared",
-          "resourceState": "stable"
+          "seed": "forest-17",
+          "partyBuild": "scout",
+          "roomChoice": "",
+          "riskLevel": "normal"
         },
         {
-          "seed": "alpha-forest",
-          "playerAction": "reroll",
-          "roomState": "unknown",
-          "resourceState": "low-health"
+          "seed": "cave-99",
+          "partyBuild": "glass",
+          "roomChoice": "elite-room",
+          "riskLevel": "high-noisy"
         }
       ],
       "expected": {
